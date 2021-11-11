@@ -1,0 +1,553 @@
+#include <allegro.h>
+#include <stdio.h>
+#include <time.h>
+#include "proto.h"
+
+#define NIMAGE 3
+
+/***********************************************************************************************************************************************************************************************************/
+
+/*                                                                                       MENU PRINCIPAL                                                                                                    */
+
+/***********************************************************************************************************************************************************************************************************/
+
+
+void menuPrincipal()
+{
+    srand(time(NULL));
+    int x,y, first=0, screenx=0, screeny=0, imgcourante=0, i, moveAlea, xFleche = 215, yFleche = 395;
+    char nomfichier[256];
+
+    BITMAP *img[NIMAGE];
+    BITMAP *page;   //buffer
+    BITMAP *decor;  //fond
+    BITMAP *titre;
+    BITMAP *fleche;
+
+    page=create_bitmap(SCREEN_W,SCREEN_H); // CREATION DU BUFFER
+    clear_bitmap(page);
+
+    decor=load_bitmap("Images/Niveau/DecorMenu.bmp",NULL);   //Chargement décor
+    titre = load_bitmap("Images/Menu/Titre0.bmp", NULL);
+    fleche = load_bitmap("Images/Menu/Fleche0.bmp", NULL);
+    if (!decor)
+    {
+        allegro_message("pas pu trouver decor.bmp");
+        exit(EXIT_FAILURE);
+    }
+
+    // charger les images de la séquence d'animation
+    for (i=0;i<NIMAGE;i++)
+    {
+        sprintf(nomfichier,"Images/Vaisseau/Vaisseau%d.bmp",i);
+
+        img[i] = load_bitmap(nomfichier,NULL);
+        if (!img[i])
+        {
+            allegro_message("pas pu trouver %s",nomfichier);
+            exit(EXIT_FAILURE);
+        }
+    }
+    //Position de base du vaisseau
+    x = 100;
+    y = 250;
+
+
+    // Boucle d'animation (pas d'interaction)
+    while (!key[KEY_ESC])
+    {
+        imgcourante = 0;
+        screenx+=10;
+        if(screenx>decor->w - SCREEN_W)
+        {
+            screenx=0;
+        }
+
+        moveAlea = rand()%100;
+        if(moveAlea>98)
+        {
+            first = 1;
+        }
+
+        if(first == 1)
+        {
+            imgcourante = 1;
+            y--;
+            if(y<220)
+            {
+                first = 2;
+            }
+        }
+        else if(first ==2)
+        {
+            imgcourante = 2;
+            y++;
+            if(y>275)
+            {
+                first = 3;
+            }
+        }
+        else if(first==3)
+        {
+            imgcourante = 1;
+            y--;
+            if(y==250)
+            {
+                first=0;
+            }
+        }
+
+        if(key[KEY_UP]||key[KEY_W])
+        {
+            yFleche = 395;
+        }
+        if(key[KEY_DOWN]||key[KEY_S])
+        {
+            yFleche = 453;
+        }
+        if(key[KEY_ENTER])
+        {
+            if(yFleche==453)
+            {
+                key[KEY_ESC] = 1;
+            }
+            if(yFleche==395)
+            {
+                boucleJeu();
+            }
+        }
+
+        //affichage du vaisseau normal
+        blit(decor,page,screenx,screeny,0,0,SCREEN_W,SCREEN_H); // effacer buffer en appliquant décor  (pas de clear_bitmap)
+        draw_sprite(page,img[imgcourante],x,y);         //on dessine sur la page le sprite du vaisseau
+        draw_sprite(page, titre, SCREEN_W/4 -50, SCREEN_H/6);
+        draw_sprite(page, fleche, xFleche, yFleche);
+        blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);    //affichage du buffer a l'ecran
+        rest(10);
+    }
+}
+
+/***********************************************************************************************************************************************************************************************************/
+
+/*                                                                                       PAUSE                                                                                                             */
+
+/***********************************************************************************************************************************************************************************************************/
+
+volatile int timer;
+void incrementa_timer() { timer++; }
+END_OF_FUNCTION(incrementa_timer)
+
+//menu pause
+void pause(BITMAP *page, BITMAP *img[NIMAGE])
+{
+    int imgcourante=0, posxPause = SCREEN_W/4 -50, posyPause = SCREEN_H/6;
+
+    timer=0;
+    install_int_ex(incrementa_timer, MSEC_TO_TIMER(1)); //met en place le timer
+    srand(time(NULL));
+
+    if(key[KEY_P])
+    {
+        timer=0;
+        key[KEY_P] = 0;         //on réinitialise la touche, sinon quitte directement la boucle
+        while(!key[KEY_P])
+        {
+            if(((timer/100)%60)>=30)        //toutes les 3 secondes (environ)
+            {
+                imgcourante++;              //change l'image
+                if(imgcourante==3)
+                {
+                    imgcourante=0;
+                }
+                timer=0;
+            }
+            draw_sprite(page, img[imgcourante], posxPause, posyPause);
+            blit(page, screen, 0,0,0,0,SCREEN_W,SCREEN_H);
+        }
+        key[KEY_P] = 0;     //on réinitialise la touche
+    }
+}
+
+//met dans un tableau bitmap les trois images qui tournent au menu pause
+void attributionImagesPause(BITMAP *img2[NIMAGE])
+{
+    int i;
+    char nomfichier[256];
+
+    for (i=0;i<NIMAGE;i++)
+    {
+        sprintf(nomfichier,"Images/Pause/Pause%d.bmp",i);
+
+        img2[i] = load_bitmap(nomfichier,NULL);
+        if (!img2[i])
+        {
+            allegro_message("pas pu trouver %s",nomfichier);
+            exit(EXIT_FAILURE);
+        }
+    }
+}
+
+
+
+/***********************************************************************************************************************************************************************************************************/
+
+/*                                                                                       Vaisseau                                                                                                          */
+
+/***********************************************************************************************************************************************************************************************************/
+
+t_joueur * creerJoueur(BITMAP *img[NIMAGE])
+{
+    int i;
+    char nomfichier[256];
+    t_joueur *nouv;
+
+
+
+    // Allouer
+    nouv = (t_joueur *)malloc(1*sizeof(t_joueur));
+
+    // Initialiser
+
+    for (i=0;i<NIMAGE;i++)
+    {
+        sprintf(nomfichier,"Images/Vaisseau/Vaisseau%d.bmp",i);
+        img[i] = load_bitmap(nomfichier,NULL);
+        if (!img[i])
+            {
+            allegro_message("pas pu trouver %s",nomfichier);
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    nouv->tx = 96;
+    nouv->ty = 36;
+
+    nouv->x = 200;
+    nouv->y = SCREEN_H/4;
+    nouv->vit = 3;
+
+    nouv->cpttir0 = 0;
+    nouv->cpttir1 = 0;
+
+    return nouv;
+}
+
+
+int actualiserJoueur(t_joueur *joueur,t_listeActeurs *la)
+{
+    int imgcourante = 0;
+    if(key[KEY_W])
+    {
+        joueur->y -= joueur->vit;
+        if (joueur->y<0)
+        {
+            joueur->y=0;
+        }
+        imgcourante = 1;
+    }
+    if(key[KEY_S])
+    {
+        joueur->y += joueur->vit;
+        if (joueur->y+joueur->ty > 550)
+        {
+            joueur->y=550-joueur->ty;
+        }
+        imgcourante = 2;
+    }
+    if(key[KEY_D])
+    {
+        joueur->x += joueur->vit;
+        if (joueur->x+joueur->tx > SCREEN_W)
+        {
+            joueur->x=SCREEN_W-joueur->tx;
+        }
+    }
+    if(key[KEY_A])
+    {
+        joueur->x -= joueur->vit;
+        if (joueur->x<0)
+        {
+            joueur->x=0;
+        }
+    }
+
+    // incrémenter la tempo des tirs
+    joueur->cpttir0++;
+    joueur->cpttir1++;
+
+    // si le joueur appui sur la gachette et arme ok...
+    // espace = laser
+    if (key[KEY_SPACE] && joueur->cpttir0>=5)
+    {
+        ajouterActeur(la,joueur->x+joueur->tx,joueur->y+joueur->ty/2,0);
+        joueur->cpttir0 = 0;
+    }
+    // entrée = missile
+    if (key[KEY_ENTER] && joueur->cpttir1>=10)
+    {
+        ajouterActeur(la,joueur->x+joueur->tx,joueur->y+joueur->ty/2,1);
+        joueur->cpttir1 = 0;
+    }
+
+    return imgcourante;
+}
+
+/***********************************************************************************************************************************************************************************************************/
+
+/*                                                                                       TIRS                                                                                                              */
+
+/***********************************************************************************************************************************************************************************************************/
+
+t_acteur * creerActeur(int x,int y,int type){
+    t_acteur *nouv;
+
+    // Allouer
+    nouv=(t_acteur *)malloc(1*sizeof(t_acteur));
+
+    // Initialiser ...
+
+    // ici ce qui est commun aux acteurs
+    nouv->x=x;
+    nouv->y=y;
+    nouv->type=type;
+    nouv->comportement=0;
+    nouv->cptexplo=0; // pas encore explosé mais on initialise par sécurité
+    nouv->vivant=1;
+
+    // ici ce qui est spécifique aux types
+    switch (type)
+    {
+        // laser
+        case 0:
+            nouv->tx=30;
+            nouv->ty=5;
+            nouv->dx=10;
+            nouv->dy=0;
+            nouv->couleur=makecol(99,99,255);
+            break;
+
+        // missile
+        case 1:
+            nouv->tx=40;
+            nouv->ty=20;
+            nouv->dx=2;
+            // petite dispersion dans la trajectoire des missiles :
+            nouv->dy=rand()%5-2;
+            nouv->couleur=makecol(240,220,220);
+            break;
+    }
+
+    return nouv;
+}
+
+t_acteur * ajouterActeur(t_listeActeurs *la,int x,int y,int type)
+{
+    int i;
+    t_acteur *acteur;
+
+    // Liste pleine, on alloue rien et on retourne NULL...
+    if (la->n >= la->max)
+        return NULL;
+
+    // Allouer un acteur initialisé
+    acteur=creerActeur(x,y,type);
+
+    // Chercher un emplacement libre
+    i=0;
+    while (la->tab[i]!=NULL && i<la->max)
+        i++;
+
+    // Si on a trouvé ...
+    // (normalement oui car on a vérifié n<max)
+    if (i<la->max){
+        // Accrocher le acteur à l'emplacement trouvé
+        la->tab[i]=acteur;
+        la->n++;
+    }
+    // Sinon c'est qu'il y a un problème de cohérence
+    else
+        allegro_message("Anomalie gestion ajouterActeur : liste corrompue");
+
+    return acteur;
+}
+
+
+t_listeActeurs * creerListeActeurs(int maxacteurs){
+    t_listeActeurs *nouv;
+    int i;
+
+    nouv=(t_listeActeurs *)malloc(1*sizeof(t_listeActeurs));
+
+    nouv->max=maxacteurs;
+    nouv->n=0;
+    nouv->tab=(t_acteur **)malloc(maxacteurs*sizeof(t_acteur*));
+
+    for (i=0;i<maxacteurs;i++)
+        nouv->tab[i]=NULL;
+
+    return nouv;
+}
+
+void actualiserActeur(t_acteur *acteur){
+
+    // deplacement
+    acteur->x=acteur->x+acteur->dx;
+    acteur->y=acteur->y+acteur->dy;
+
+    // type missile : accélère en dx mais pas au dela d'une limite
+    if (acteur->type==1 && acteur->dx<14)
+        acteur->dx++;
+
+    // si dépasse le bord alors disparait
+    if (acteur->x+acteur->tx<0 || acteur->x>SCREEN_W || acteur->y+acteur->ty<0 || acteur->y>SCREEN_H )
+        acteur->vivant=0;
+
+    // si en cours d'explosion incrémenter cptexplo
+    // et si explose depuis trop longtemps alors disparait
+    if (acteur->comportement==1)
+    {
+        acteur->cptexplo++;
+        if (acteur->cptexplo > 7)
+            acteur->vivant=0;
+    }
+}
+
+void enleverActeur(t_listeActeurs *la,int i){
+
+    // Vérifier qu'il y a bien un acteur accroché en indice i
+    if (la->tab[i]!=NULL)
+    {
+        // libérer la mémoire du acteur
+        free(la->tab[i]);
+
+        // marquer l'emplacement comme libre
+        la->tab[i]=NULL;
+        la->n--;
+
+    }
+}
+
+void actualiserListeActeurs(t_listeActeurs *la){
+    int i;
+
+    // actualiser chaque acteur
+    // si un acteur n'est plus vivant, l'enlever de la liste
+    for (i=0;i<la->max;i++)
+        if (la->tab[i]!=NULL){
+            actualiserActeur(la->tab[i]);
+            if (!la->tab[i]->vivant){
+                enleverActeur(la,i);
+            }
+        }
+}
+
+void dessinerListeActeurs(BITMAP *bmp,t_listeActeurs *la){
+    int i;
+
+    for (i=0;i<la->max;i++)
+        if (la->tab[i]!=NULL)
+            dessinerActeur(bmp,la->tab[i]);
+
+}
+
+void dessinerActeur(BITMAP *bmp,t_acteur *acteur)
+{
+    BITMAP *missile;
+    missile = load_bitmap("Images/Vaisseau/missile.bmp", NULL);
+    // Si pas d'explosion
+    if (acteur->comportement==0){
+        switch(acteur->type)
+        {
+            case 0:
+                rectfill(bmp,acteur->x,acteur->y-1,acteur->x+acteur->tx,acteur->y+1,acteur->couleur);
+                rectfill(bmp,acteur->x,acteur->y+1,acteur->x+acteur->tx,acteur->y+acteur->ty-1,makecol(255,255,255));
+                rectfill(bmp,acteur->x,acteur->y+acteur->ty-1,acteur->x+acteur->tx,acteur->y+acteur->ty,acteur->couleur);
+                break;
+            case 1:
+                draw_sprite(bmp, missile, acteur->x, acteur->y);
+                break;
+        }
+}
+    // sinon on dessine l'explosion
+    // d'un diamètre décroissant et d'une couleur rougissante
+    else {
+        switch(acteur->type)
+        {
+            case 0:
+                circlefill(bmp,acteur->x+acteur->tx/2,acteur->y+acteur->ty/2,30-4*acteur->cptexplo,makecol(255,255-15*acteur->cptexplo,255-30*acteur->cptexplo));
+                break;
+            case 1:
+                circlefill(bmp,acteur->x+acteur->tx/2,acteur->y+acteur->ty/2,60-6*acteur->cptexplo,makecol(255-15*acteur->cptexplo,128-15*acteur->cptexplo,0));
+                break;
+        }
+    }
+}
+
+
+/***********************************************************************************************************************************************************************************************************/
+
+/*                                                                                       BOUCLE DE JEU                                                                                                     */
+
+/***********************************************************************************************************************************************************************************************************/
+
+void boucleJeu()
+{
+    int screenx = 0, screenx2 = 0, screeny=0, imgcourante=0, score = 5055155, first =0;
+    srand(time(NULL));
+
+    t_listeActeurs *acteurs;
+    t_joueur *vaisseau;
+    BITMAP *img[NIMAGE];
+    BITMAP *img2[NIMAGE];
+    BITMAP *page;
+    t_niveau niveau1;                            //pour le moment plateau basique
+    page=create_bitmap(SCREEN_W,SCREEN_H);
+    clear_bitmap(page);
+
+    niveau1.plateau1=load_bitmap("Images/Niveau/DECOR2.bmp",NULL);
+    niveau1.plateau2 = load_bitmap("Images/Niveau/Decor3 VIDE.bmp", NULL);
+    if (!niveau1.plateau1)
+    {
+        allegro_message("pas pu trouver decor.bmp");
+        exit(EXIT_FAILURE);
+    }
+
+    attributionImagesPause(img2);
+    vaisseau = creerJoueur(img);
+    acteurs=creerListeActeurs(100);
+
+    while (!key[KEY_ESC])
+    {
+        pause(page, img2);
+        imgcourante=0;
+        screenx+=8;                             //on reduira la vitesse plus tard
+        if(screenx<niveau1.plateau1->w)
+        {
+            blit(niveau1.plateau1,page,screenx,screeny,0,0,SCREEN_W,SCREEN_H);
+        }
+        if(screenx>niveau1.plateau1->w-800)
+        {
+            if(first==0)
+            {
+                screenx2=-500;
+            }
+            first = 1;
+            blit(niveau1.plateau2,page,screenx2,screeny,0,0,SCREEN_W,SCREEN_H);
+            screenx2+=8;
+            if(screenx2>niveau1.plateau2->w-SCREEN_W)
+            {
+                first = 0;
+            }
+                                    //repete le screen de façon infinie
+        }
+
+        imgcourante = actualiserJoueur(vaisseau,acteurs);
+        actualiserListeActeurs(acteurs);
+        textprintf_ex(page, font, 20, 575, makecol(255,255,255), -1, "SCORE : %d", score);
+
+        draw_sprite(page,img[imgcourante],vaisseau->x,vaisseau->y);
+        dessinerListeActeurs(page,acteurs);
+        blit(page,screen,0,0,0,0,SCREEN_W,SCREEN_H);
+        rest(10);
+    }
+}

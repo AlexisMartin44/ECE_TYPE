@@ -1,0 +1,491 @@
+# depslib dependency file v1.0
+1553017130 source:c:\users\alexi\documents\codeblock\projet test\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1553030902 c:\users\alexi\documents\codeblock\projet test\proto.h
+
+1553016745 source:c:\users\alexi\documents\codeblock\projet test\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1553192373 source:c:\users\alexi\desktop\projet test\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1553518995 c:\users\alexi\desktop\projet test\proto.h
+
+1553546360 source:c:\users\alexi\desktop\projet test\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1553192373 source:c:\users\alexi\desktop\projet test - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1553611495 c:\users\alexi\desktop\projet test - copie\proto.h
+
+1553518968 source:c:\users\alexi\desktop\projet test - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1553192373 source:c:\users\alexi\desktop\projet test - copie - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1553518995 c:\users\alexi\desktop\projet test - copie - copie\proto.h
+
+1553545845 source:c:\users\alexi\desktop\projet test - copie - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1553192373 source:c:\users\alexi\desktop\projet test - copie (2)\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1553602107 c:\users\alexi\desktop\projet test - copie (2)\proto.h
+
+1553602718 source:c:\users\alexi\desktop\projet test - copie (2)\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1553192373 source:c:\users\alexi\desktop\projet\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1553632232 c:\users\alexi\desktop\projet\proto.h
+
+1553633810 source:c:\users\alexi\desktop\projet\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1553195974 source:e:\projet\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1553635834 e:\projet\proto.h
+
+1554134774 source:e:\projet\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1554187892 source:c:\users\ece\desktop\nouveau dossier\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1554200498 c:\users\ece\desktop\nouveau dossier\proto.h
+
+1554187892 source:c:\users\ece\desktop\nouveau dossier\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1554187892 source:c:\users\alexi\desktop\projet ennemis\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1554397262 c:\users\alexi\desktop\projet ennemis\proto.h
+
+1554398541 source:c:\users\alexi\desktop\projet ennemis\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1554187892 source:c:\users\alexi\desktop\projet ennemis - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1554416546 c:\users\alexi\desktop\projet ennemis - copie\proto.h
+
+1554411267 source:c:\users\alexi\desktop\projet ennemis - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1554187892 source:c:\users\alexi\desktop\projet - tir charger\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1554555572 c:\users\alexi\desktop\projet - tir charger\proto.h
+
+1554555594 source:c:\users\alexi\desktop\projet - tir charger\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1554187892 source:c:\users\alexi\desktop\projet - tir charger - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1554566512 c:\users\alexi\desktop\projet - tir charger - copie\proto.h
+
+1554566968 source:c:\users\alexi\desktop\projet - tir charger - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1554187892 source:c:\users\alexi\desktop\projet - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1554668683 c:\users\alexi\desktop\projet - copie\proto.h
+
+1554657535 source:c:\users\alexi\desktop\projet - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1554187892 source:c:\users\alexi\desktop\projet - copie - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1554761407 c:\users\alexi\desktop\projet - copie - copie\proto.h
+
+1554762262 source:c:\users\alexi\desktop\projet - copie - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1554187892 source:c:\users\alexi\desktop\commenté\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555010788 c:\users\alexi\desktop\commenté\proto.h
+
+1555011135 source:c:\users\alexi\desktop\commenté\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1554187892 source:c:\users\alexi\desktop\commenté - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555270103 c:\users\alexi\desktop\commenté - copie\proto.h
+
+1555270577 source:c:\users\alexi\desktop\commenté - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1554187892 source:c:\users\alexi\desktop\version début game over\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555273118 c:\users\alexi\desktop\version début game over\proto.h
+
+1555271938 source:c:\users\alexi\desktop\version début game over\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1554187892 source:c:\users\alexi\desktop\version début game over - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555322096 c:\users\alexi\desktop\version début game over - copie\proto.h
+
+1555322342 source:c:\users\alexi\desktop\version début game over - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555363584 source:c:\users\ece\desktop\version globale\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555363584 c:\users\ece\desktop\version globale\proto.h
+
+1555421220 source:c:\users\ece\desktop\version globale\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555363584 source:c:\users\alexi\desktop\version globale\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555524062 c:\users\alexi\desktop\version globale\proto.h
+
+1555516487 source:c:\users\alexi\desktop\version globale\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555363584 source:c:\users\alexi\desktop\version globale - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555533204 c:\users\alexi\desktop\version globale - copie\proto.h
+
+1555534280 source:c:\users\alexi\desktop\version globale - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555587352 source:c:\users\ece\desktop\nouveau dossier (3)\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555587352 c:\users\ece\desktop\nouveau dossier (3)\proto.h
+
+1555670045 source:c:\users\ece\desktop\nouveau dossier (3)\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555688392 source:c:\users\alexi\desktop\projetv4\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555850359 c:\users\alexi\desktop\projetv4\proto.h
+
+1555789634 source:c:\users\alexi\desktop\projetv4\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555688392 source:c:\users\alexi\desktop\projetv4 - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555852559 c:\users\alexi\desktop\projetv4 - copie\proto.h
+
+1555853123 source:c:\users\alexi\desktop\projetv4 - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555688392 source:c:\users\alexi\desktop\niveau 2 & 3\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555875706 c:\users\alexi\desktop\niveau 2 & 3\proto.h
+
+1555876285 source:c:\users\alexi\desktop\niveau 2 & 3\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555688392 source:c:\users\alexi\desktop\niveau 2 & 3 - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1555971418 c:\users\alexi\desktop\niveau 2 & 3 - copie\proto.h
+
+1555974482 source:c:\users\alexi\desktop\niveau 2 & 3 - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555688392 source:c:\users\ece\desktop\niveauincroyable\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556026840 c:\users\ece\desktop\niveauincroyable\proto.h
+
+1556028900 source:c:\users\ece\desktop\niveauincroyable\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555688392 source:c:\users\ece\desktop\niveauincroyable - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556038894 c:\users\ece\desktop\niveauincroyable - copie\proto.h
+
+1556037922 source:c:\users\ece\desktop\niveauincroyable - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555688392 source:c:\users\ece\desktop\niveauincroyable - copie - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556106019 c:\users\ece\desktop\niveauincroyable - copie - copie\proto.h
+
+1556105265 source:c:\users\ece\desktop\niveauincroyable - copie - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555688392 source:c:\users\ece\desktop\projetfinalv0\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556141989 c:\users\ece\desktop\projetfinalv0\proto.h
+
+1556150686 source:c:\users\ece\desktop\projetfinalv0\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1555688392 source:c:\users\ece\desktop\projetfinalv1\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556141989 c:\users\ece\desktop\projetfinalv1\proto.h
+
+1556173493 source:c:\users\laure\downloads\projetfinalv2\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556174425 c:\users\laure\downloads\projetfinalv2\proto.h
+
+1556176040 source:c:\users\laure\downloads\projetfinalv2\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1556192530 source:c:\users\ece\desktop\projetfinalv2\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556204884 c:\users\ece\desktop\projetfinalv2\proto.h
+
+1556206071 source:c:\users\ece\desktop\projetfinalv2\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1556192530 source:c:\users\ece\desktop\projetfinalv3 - copie\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556214217 c:\users\ece\desktop\projetfinalv3 - copie\proto.h
+
+1556210419 source:c:\users\ece\desktop\projetfinalv3 - copie\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1556192530 source:c:\users\ece\desktop\projetfinalv3\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556215340 c:\users\ece\desktop\projetfinalv3\proto.h
+
+1556215461 source:c:\users\ece\desktop\projetfinalv3\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1556216287 source:c:\users\laure\downloads\projetfinalv3 (1)\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556216858 c:\users\laure\downloads\projetfinalv3 (1)\proto.h
+
+1556210126 source:c:\users\ece\desktop\projetfinalv4\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556218186 c:\users\ece\desktop\projetfinalv4\proto.h
+
+1556218235 source:c:\users\ece\desktop\projetfinalv4\ssprg.c
+	<allegro.h>
+	<stdio.h>
+	<time.h>
+	"proto.h"
+
+1556210126 source:c:\users\ece\desktop\projetfinalv5\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556220235 c:\users\ece\desktop\projetfinalv5\proto.h
+
+1556221780 source:c:\users\laure\downloads\projetfinalv5 (1)\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556221867 c:\users\laure\downloads\projetfinalv5 (1)\proto.h
+
+1556221780 source:c:\users\laure\downloads\projet 2\projetfinals2\main.c
+	<allegro.h>
+	<stdio.h>
+	"proto.h"
+
+1556221867 c:\users\laure\downloads\projet 2\projetfinals2\proto.h
+
